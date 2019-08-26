@@ -2,17 +2,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
-
-  transform(value: any, filterString: string, propName: string ): any {
-    const  resultArray = [];
-    if ( value.length === 0 || filterString === '' ) {
+  transform(value: any, filterString: string, propName: string): any {
+    const resultArray = [];
+    if (value.length === 0 || filterString === '') {
       return value;
     }
     for (const item of value) {
-      if ( item[propName] === filterString ) {
+      if (item[propName] === filterString) {
         resultArray.push(item);
       }
     }
